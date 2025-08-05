@@ -1,4 +1,4 @@
-#💬 BoomFare Messenger – A Next-Gen Messaging Platform for the Bold Gen Z
+💬 BoomFare Messenger – A Next-Gen Messaging Platform for the Bold Gen Z
 BoomFare Messenger is a modern, secure, and vibe-heavy messaging web app, designed for Nigerian and global Gen Z users who want speed, privacy, and style — all in one clean package.
 Inspired by WhatsApp, built for the now.
 
