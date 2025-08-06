@@ -8,7 +8,7 @@ BoomFare Messenger is a modern, secure, and vibe-heavy messaging web app, design
 ### 🎨 Frontend
 - **Next.js (App Router):** Core React framework with file-based routing.
 - **Tailwind CSS:** Utility-first styling with full custom theme support.
-- **Zustand / Context API:** Lightweight state management.
+- **Zustand / Context API:** Lightweight state management .
 - **Lucide / Heroicons:** Sleek, minimal SVG icon packs.
 - **Framer Motion:** Smooth Gen Z-style animations and page transitions.
 
