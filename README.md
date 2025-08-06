@@ -59,8 +59,8 @@ BoomFare Messenger is a modern, secure, and vibe-heavy messaging web app, design
 ### Installation
 1.  **Clone the repository:**
     ```bash
-    git clone https://github.com/your-username/boomfare-messenger.git
-    cd boomfare-messenger
+    git clone https://github.com/Infexjay/BoomFare.git
+    cd BoomFare
     ```
 2.  **Install dependencies:**
     ```bash
