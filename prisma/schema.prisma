@@ -1,0 +1,93 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            String    @id @default(cuid())
+  name          String?
+  email         String?   @unique
+  emailVerified DateTime?
+  image         String?
+  accounts      Account[]
+  sessions      Session[]
+
+  // Custom fields for BoomFare
+  username      String?   @unique
+  bio           String?
+
+  messagesSent     Message[] @relation("SentMessages")
+  messagesReceived Message[] @relation("ReceivedMessages")
+
+  isVerified      Boolean   @default(false)
+  verification    Verification?
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Message {
+  id        String   @id @default(cuid())
+  content   String
+  fileUrl   String?
+  messageType String @default("text") // "text", "image", "file"
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  senderId  String
+  sender    User     @relation("SentMessages", fields: [senderId], references: [id])
+
+  recipientId String
+  recipient   User     @relation("ReceivedMessages", fields: [recipientId], references: [id])
+
+  isRead    Boolean  @default(false)
+  replyToId String?
+  replyTo   Message? @relation("Replies", fields: [replyToId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  replies   Message[] @relation("Replies")
+}
+
+model Verification {
+  id        String   @id @default(cuid())
+  userId    String   @unique
+  user      User     @relation(fields: [userId], references: [id])
+
+  type      String   // "LIFETIME", "MONTHLY", "CELEBRITY"
+  status    String   // "PENDING", "ACTIVE", "INACTIVE"
+
+  stripePaymentId String? @unique
+
+  createdAt DateTime @default(now())
+  expiresAt DateTime?
+}
