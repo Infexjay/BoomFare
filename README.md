@@ -1,3 +1,4 @@
+feature/setup-full-stack-monorepo
 # BoomFare Messenger – A Next-Gen Messaging Platform
 
 BoomFare Messenger is a modern, secure, and vibe-heavy messaging web app, designed for Nigerian and global Gen Z users who want speed, privacy, and style — all in one clean package. Inspired by WhatsApp, built for the now.
@@ -84,3 +85,6 @@ The application will be available at `http://localhost:3000`.
 - Emojis / Stickers + Giphy/Gfycat integration
 - Scheduled messages / auto-replies
 - Optional server-side media backups for premium users
+
+
+main
